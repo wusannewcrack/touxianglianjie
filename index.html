@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小天才整合 ROOT · 液态玻璃科技站</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>小天才整合 ROOT · 液态玻璃科技站</title>
+<style>
 * {
     margin: 0;
     padding: 0;
@@ -508,343 +508,344 @@ body::before {
         gap: 16px;
     }
 }
-    </style>
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- 头部 -->
-        <div class="header">
-            <h1>小天才整合 ROOT 网站</h1>
-            <p>🔓 ROOT 权限 · 刷机救砖 · 解除限制 · 术语百科</p>
-        </div>
-
-        <!-- ========= 快速入口 ========= -->
-        <div class="section-title">
-            ⚡ 快速入口
-            <span>官方&教程</span>
-        </div>
-        <div class="grid-2">
-            <div class="card" onclick="createRipple(event)">
-                <h3>ATB 工具箱官网</h3>
-                <p>官方原版工具 · 一键ROOT · 关闭限制 · 救砖修复 · 安装第三方软件，小白友好。</p>
-                <a href="https://atb.xy1.top" target="_blank" rel="noopener noreferrer">🚀 进入官网</a>
-            </div>
-            <div class="card" onclick="createRipple(event)">
-                <h3>ROOT 教程 · 基础</h3>
-                <p>Bootloader / Fastboot / Recovery 详解 · 短接解锁 · 线刷救砖 · 权限原理。</p>
-                <a href="#terms">📘 查看教程</a>
-            </div>
-        </div>
-
-        <!-- ========= B站视频教程 ========= -->
-        <div class="section-title">
-            🎬 B站 视频教程
-            <span>新增教程</span>
-        </div>
-        <div class="grid-2">
-            <div class="card" onclick="createRipple(event)">
-                <h3>【2026】可穿戴设备保姆级ROOT教程</h3>
-                <p>小天才电话手表全流程 · 解锁+ROOT+模块装载 · 新手友好</p>
-                <a href="https://b23.tv/rqWL7nN" target="_blank" rel="noopener noreferrer">▶️ 立即观看</a>
-            </div>
-            <div class="card" onclick="createRipple(event)">
-                <h3>小天才电话手表详细短接教程</h3>
-                <p>9008模式进入方法 · 短接点位图解 · 救砖必备</p>
-                <a href="https://b23.tv/A0mUoNX" target="_blank" rel="noopener noreferrer">🔧 观看短接教程</a>
-            </div>
-        </div>
-
-        <!-- ========= 重要提示（黄色点缀） ========= -->
-        <div class="warn-card important">
-            <h3>使用须知</h3>
-            <p>🔹 操作前请严格按照工具提示步骤进行，不要随意跳过或断开连接。</p>
-            <p>🔹 遇到报错可对照本站错误码列表排查（短接/驱动/端口问题）。</p>
-            <p>🔹 高版本机型通常需要短接进入深度刷机模式，操作有风险，请自行承担。</p>
-            <p>🔹 本站资源仅供学习研究，请于24小时内删除，支持正版。</p>
-            <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
-                <span style="background:rgba(40, 45, 60, 0.6); backdrop-filter:blur(5px); padding:6px 18px; border-radius:30px; font-size:0.9rem; color:#f0b34b; border:1px solid rgba(240, 180, 75, 0.3);">⚠️ 救砖前备份数据</span>
-                <span style="background:rgba(40, 45, 60, 0.6); backdrop-filter:blur(5px); padding:6px 18px; border-radius:30px; font-size:0.9rem; color:#aac9ff; border:1px solid rgba(100, 150, 255, 0.3);">⚙️ 驱动安装必看</span>
-            </div>
-        </div>
-
-        <!-- ========= 教程资源大合集 ========= -->
-        <div class="resource-card">
-            <div class="resource-header">
-                <h2>
-                    📁 小天才教程资源大合集
-                    <span>按需选择</span>
-                </h2>
-                <a href="https://www.123865.com/s/nFXhvd-gdpod" target="_blank" class="download-btn">
-                    ⬇️ 进入网盘下载 ⬇️
-                    <small>123云盘 · 选对应机型</small>
-                </a>
-            </div>
-            <p style="color:#a5b7d4; margin-bottom:15px;">点击上方按钮跳转网盘，对照下方列表选择机型文件</p>
-            
-            <div class="resource-grid">
-                <div class="resource-item">
-                    <h4>⌚ Z系列机型</h4>
-                    <ul>
-                        <li>Z6/Z6Pro 官方线刷包</li>
-                        <li>Z7/Z8 解锁Bootloader补丁</li>
-                        <li>Z9/Z10 ROOT专用Magisk模块</li>
-                        <li>Z全系列 去升级锁补丁</li>
-                    </ul>
-                </div>
-                <div class="resource-item">
-                    <h4>⌚ Q/Y/D系列</h4>
-                    <ul>
-                        <li>Q1a/Q3 第三方Recovery</li>
-                        <li>Y01/Y02 lineageOS 18.1</li>
-                        <li>D3/D5 原厂固件备份</li>
-                        <li>Y系列 解除安装限制</li>
-                    </ul>
-                </div>
-                <div class="resource-item">
-                    <h4>🔧 通用工具&驱动</h4>
-                    <ul>
-                        <li>小天才全系列USB驱动</li>
-                        <li>高通9008救砖驱动</li>
-                        <li>ADB/Fastboot 平台工具</li>
-                        <li>短接图合集 (Z8/Z9/Q1a)</li>
-                    </ul>
-                </div>
-                <div class="resource-item">
-                    <h4>📝 教程/补丁</h4>
-                    <ul>
-                        <li>解除系统更新/禁止升级</li>
-                        <li>开启adb root权限方法</li>
-                        <li>精简系统app列表</li>
-                        <li>隐藏ROOT/银行检测</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========= 高版本警示（红色点缀） ========= -->
-        <div class="warn-card danger">
-            <h3>高版本机型限制说明</h3>
-            <p>高版本机型无法通过常规方式开启开发者选项，必须通过短接进入线刷模式后进行操作。</p>
-        </div>
-
-        <!-- ========= 术语部分 ========= -->
-        <div class="section-title" id="terms">
-            📖 基础术语详解
-            <span>必读</span>
-        </div>
-        
-        <div class="term-item">
-            <strong>Bootloader (启动引导程序)</strong>
-            <p>设备上电后最先运行的底层程序，负责初始化硬件、启动系统内核。解锁 Bootloader 是刷机的第一道门槛，解锁后会清除所有用户数据。</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>Fastboot (线刷协议)</strong>
-            <p>安卓系统底层的刷机通信协议，在 Bootloader 模式下运行。通过电脑端 fastboot 命令可以刷写分区、解锁BL、重启设备等，是救砖最常用的模式。</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>Recovery (恢复模式)</strong>
-            <p>独立于主系统的轻量级环境，用于系统还原、OTA升级、清空数据。第三方 Recovery (如 TWRP) 提供触摸屏、备份还原、刷入zip包等功能。</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>ROOT 权限</strong>
-            <p>安卓系统中相当于管理员权限，获得后可访问和修改所有系统文件、冻结应用、装载模块 (如Magisk)、修改host等。小天才手表 ROOT 后可解除安装限制、去除云控。</p>
-        </div>
-
-        <div class="section-title">
-            🔧 进阶相关概念
-        </div>
-        
-        <div class="term-item">
-            <strong>Magisk (魔法面具)</strong>
-            <p>目前最流行的无系统 ROOT 工具，支持隐藏 ROOT 状态、装载模块、修改 system 分区而不实际写入。常用模块：移除升级、解除第三方限制。</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>ADB (安卓调试桥)</strong>
-            <p>电脑与安卓设备通信的调试工具，可执行命令安装应用、传输文件、进入 fastboot/recovery。是刷机前必备的基础工具。</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>短接 (Deep Flash / 9008)</strong>
-            <p>当设备变砖或无法进入 fastboot 时，通过硬件短接两个测试点使设备进入深度刷机模式。这是高版本小天才手表唯一救砖/解锁的途径。</p>
-        </div>
-
-        <!-- ========= 机型短接参考 ========= -->
-        <div class="section-title">
-            ⏺️ 机型短接参考
-        </div>
-        
-        <div class="term-item">
-            <strong>Z9 / Z10 / 部分 Z8A</strong>
-            <p>6点短接进入线刷 (9008模式)</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>Z7 / Z8</strong>
-            <p>4点短接进入线刷</p>
-        </div>
-        
-        <div class="term-item">
-            <strong>重要提示</strong>
-            <p>不同机型测试点不可混用，短接错误可能导致无法识别设备。</p>
-        </div>
-
-        <!-- ========= Z10特别提示（带图片） ========= -->
-        <div class="warn-card important" style="width: 100%; box-sizing: border-box; padding: 10px; margin: 10px 0;">
-            <h3>📱 Z10(ND03) 特别提示</h3>
-            <p>使用 AllToolBox1.3.5 破解时，手表会出现 fastboot 界面：</p>
-            <img 
-                src="" 
-                alt="fastbootd界面" 
-                class="guide-img"
-                style="width: 100%; max-width: 500px; height: auto; display: block; margin: 10px 0; border: none;"
-                onerror="this.src='https://cdn.jsdelivr.net/gh/wusannewcrack/touxianglianjie/main/fastboot.jpg'; this.onerror=null;"
-            >
-            <p>点击屏幕选中 <strong>"reboot to bootloader"</strong>，按开机键确认。</p>
-            <p style="color: #f0b34b;">进入bootloader后不要操作手表，继续在电脑端执行后续命令。</p>
-        </div>
-
-        <!-- ========= ATB工具箱 ========= -->
-        <div class="section-title">
-            🛠️ ATB 工具箱功能
-        </div>
-        
-        <div class="term-item">
-            <p>✅ 一键获取ROOT权限 (适配小天才全系列)</p>
-            <p>✅ 防云控与系统校验关闭</p>
-            <p>✅ Magisk模块刷入与装载 (解除限制/去升级)</p>
-            <p>✅ 第三方应用免限制安装</p>
-            <p>✅ 线刷救砖与系统分区修复</p>
-        </div>
-        
-        <a href="https://atb.xy1.top" class="download-btn" target="_blank" style="margin: 10px 0 30px; display:block;">
-            🚀 前往 ATB 工具箱官网
-        </a>
-
-        <!-- 底部警示 -->
-        <div class="warn-card important" style="margin-top: 20px;">
-            <h3>操作提示</h3>
-            <p>短接、线刷、解锁Bootloader均存在设备变砖、数据丢失的风险。以上内容仅供技术研究与学习，实际操作请自行承担风险。</p>
-        </div>
-
-        <!-- ========= 开发者与鸣谢板块 ========= -->
-        <div class="credits-section">
-            <div class="credits-title">
-                👥 开发者与鸣谢
-                <span>致谢贡献者</span>
-            </div>
-            
-            <div class="credits-grid">
-                <!-- 小伍游天下 - 短接教程 -->
-                <div class="credit-card">
-                    <img 
-                      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xwytx.jpg" 
-                      alt="小伍游天下" 
-                      class="avatar-img"
-                      onerror="this.src='https://picsum.photos/100/100';"
-                    >
-                    <h4>小伍游天下</h4>
-                    <p>提供短接教程<br>9008模式进入方法</p>
-                    <div class="credit-badge">短接教学</div>
-                </div>
-                
-                <!-- Skyinsult_Tista - ROOT教程 -->
-                <div class="credit-card">
-                    <img 
-                      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/Skyinsult.jpg" 
-                      alt="Skyinsult_Tista" 
-                      class="avatar-img"
-                      onerror="this.src='https://picsum.photos/100/100';"
-                    >
-                    <h4>Skyinsult_Tista</h4>
-                    <p>提供ROOT教程<br>解锁+模块装载</p>
-                    <div class="credit-badge">ROOT教学</div>
-                </div>
-                
-                <!-- 小公爵快乐236等 - ATB工具箱 -->
-                <div class="credit-card">
-                    <img 
-                      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xgj.jpg" 
-                      alt="小公爵快乐236等" 
-                      class="avatar-img"
-                      onerror="this.src='https://picsum.photos/100/100';"
-                    >
-                    <h4>小公爵快乐236等</h4>
-                    <p>开发ATB一键XTCROOT工具箱<br>全系列适配</p>
-                    <div class="credit-badge">工具箱开发</div>
-                </div>
-
-                <!-- 伍潵 -->
-                <div class="credit-card">
-                    <img 
-                      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/wusan.jpg" 
-                      alt="伍潵" 
-                      class="avatar-img"
-                      onerror="this.src='https://picsum.photos/100/100';"
-                    >
-                    <h4>伍潵</h4>
-                    <p>网页 · 辅助制作<br>头像链接制作</p>
-                    <div class="credit-badge">网页开发</div>
-                </div>
-                
-                <!-- LIULANGZ - 网页制作者 -->
-                <div class="credit-card">
-                    <img 
-                      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/LIULANGZ.jpg" 
-                      alt="LIULANGZ" 
-                      class="avatar-img"
-                      <!DOCTYPE html   超文本标记语言>< !“博士html”。“博士html”。“博士html”。“博士html”。“博士html”。“博士html”。“博士html”。“博士html”。DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>   < !DOCTYPE html>onerror="this.src='https://picsum.photos/100/100';"
-                    >
-                    <h4>LIULANGZ</h4>
-                    <p>网页制作 · 资源整合<br>液态玻璃UI设计</p>
-                    <div class="credit-badge">网页开发</div>
-                </div>
-            </div>   < / div>
-        </div>   < / div>
-
-        <!-- 简单页脚 -->
-        <div class="footer">
-            © 2026 小天才整合ROOT站
-        </div>   < / div>
+<div class="container">
+    <!-- 头部 -->
+    <div class="header">
+        <h1>小天才整合 ROOT 网站</h1>
+        <p>🔓 ROOT 权限 · 刷机救砖 · 解除限制 · 术语百科</p>
     </div>
 
-    <script>
+    <!-- ========= 快速入口 ========= -->
+    <div class="section-title">
+        ⚡ 快速入口
+        <span>官方&教程</span>
+    </div>
+    <div class="grid-2">
+        <div class="card" onclick="createRipple(event)">
+            <h3>ATB 工具箱官网</h3>
+            <p>官方原版工具 · 一键ROOT · 关闭限制 · 救砖修复 · 安装第三方软件，小白友好。</p>
+            <a href="https://atb.xy1.top" target="_blank" rel="noopener noreferrer">🚀 进入官网</a>
+        </div>
+        <div class="card" onclick="createRipple(event)">
+            <h3>ROOT 教程 · 基础</h3>
+            <p>Bootloader / Fastboot / Recovery 详解 · 短接解锁 · 线刷救砖 · 权限原理。</p>
+            <a href="#terms">📘 查看教程</a>
+        </div>
+    </div>
+
+    <!-- ========= B站视频教程 ========= -->
+    <div class="section-title">
+        🎬 B站 视频教程
+        <span>新增教程</span>
+    </div>
+    <div class="grid-2">
+        <div class="card" onclick="createRipple(event)">
+            <h3>【2026】可穿戴设备保姆级ROOT教程</h3>
+            <p>小天才电话手表全流程 · 解锁+ROOT+模块装载 · 新手友好</p>
+            <a href="https://b23.tv/rqWL7nN" target="_blank" rel="noopener noreferrer">▶️ 立即观看</a>
+        </div>
+        <div class="card" onclick="createRipple(event)">
+            <h3>小天才电话手表详细短接教程</h3>
+            <p>9008模式进入方法 · 短接点位图解 · 救砖必备</p>
+            <a href="https://b23.tv/A0mUoNX" target="_blank" rel="noopener noreferrer">🔧 观看短接教程</a>
+        </div>
+    </div>
+
+    <!-- ========= 重要提示（黄色点缀） ========= -->
+    <div class="warn-card important">
+        <h3>使用须知</h3>
+        <p>🔹 操作前请严格按照工具提示步骤进行，不要随意跳过或断开连接。</p>
+        <p>🔹 遇到报错可对照本站错误码列表排查（短接/驱动/端口问题）。</p>
+        <p>🔹 高版本机型通常需要短接进入深度刷机模式，操作有风险，请自行承担。</p>
+        <p>🔹 本站资源仅供学习研究，请于24小时内删除，支持正版。</p>
+        <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <span style="background:rgba(40, 45, 60, 0.6); backdrop-filter:blur(5px); padding:6px 18px; border-radius:30px; font-size:0.9rem; color:#f0b34b; border:1px solid rgba(240, 180, 75, 0.3);">⚠️ 救砖前备份数据</span>
+            <span style="background:rgba(40, 45, 60, 0.6); backdrop-filter:blur(5px); padding:6px 18px; border-radius:30px; font-size:0.9rem; color:#aac9ff; border:1px solid rgba(100, 150, 255, 0.3);">⚙️ 驱动安装必看</span>
+        </div>
+    </div>
+
+    <!-- ========= 教程资源大合集 ========= -->
+    <div class="resource-card">
+        <div class="resource-header">
+            <h2>
+                📁 小天才教程资源大合集
+                <span>按需选择</span>
+            </h2>
+            <a href="https://www.123865.com/s/nFXhvd-gdpod" target="_blank" class="download-btn">
+                ⬇️ 进入网盘下载 ⬇️
+                <small>123云盘 · 选对应机型</small>
+            </a>
+        </div>
+        <p style="color:#a5b7d4; margin-bottom:15px;">点击上方按钮跳转网盘，对照下方列表选择机型文件</p>
+        
+        <div class="resource-grid">
+            <div class="resource-item">
+                <h4>⌚ Z系列机型</h4>
+                <ul>
+                    <li>Z6/Z6Pro 官方线刷包</li>
+                    <li>Z7/Z8 解锁Bootloader补丁</li>
+                    <li>Z9/Z10 ROOT专用Magisk模块</li>
+                    <li>Z全系列 去升级锁补丁</li>
+                </ul>
+            </div>
+            <div class="resource-item">
+                <h4>⌚ Q/Y/D系列</h4>
+                <ul>
+                    <li>Q1a/Q3 第三方Recovery</li>
+                    <li>Y01/Y02 lineageOS 18.1</li>
+                    <li>D3/D5 原厂固件备份</li>
+                    <li>Y系列 解除安装限制</li>
+                </ul>
+            </div>
+            <div class="resource-item">
+                <h4>🔧 通用工具&驱动</h4>
+                <ul>
+                    <li>小天才全系列USB驱动</li>
+                    <li>高通9008救砖驱动</li>
+                    <li>ADB/Fastboot 平台工具</li>
+                    <li>短接图合集 (Z8/Z9/Q1a)</li>
+                </ul>
+            </div>
+            <div class="resource-item">
+                <h4>📝 教程/补丁</h4>
+                <ul>
+                    <li>解除系统更新/禁止升级</li>
+                    <li>开启adb root权限方法</li>
+                    <li>精简系统app列表</li>
+                    <li>隐藏ROOT/银行检测</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========= 高版本警示（红色点缀） ========= -->
+    <div class="warn-card danger">
+        <h3>高版本机型限制说明</h3>
+        <p>高版本机型无法通过常规方式开启开发者选项，必须通过短接进入线刷模式后进行操作。</p>
+    </div>
+
+    <!-- ========= 术语部分 ========= -->
+    <div class="section-title" id="terms">
+        📖 基础术语详解
+        <span>必读</span>
+    </div>
+    
+    <div class="term-item">
+        <strong>Bootloader (启动引导程序)</strong>
+        <p>设备上电后最先运行的底层程序，负责初始化硬件、启动系统内核。解锁 Bootloader 是刷机的第一道门槛，解锁后会清除所有用户数据。</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>Fastboot (线刷协议)</strong>
+        <p>安卓系统底层的刷机通信协议，在 Bootloader 模式下运行。通过电脑端 fastboot 命令可以刷写分区、解锁BL、重启设备等，是救砖最常用的模式。</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>Recovery (恢复模式)</strong>
+        <p>独立于主系统的轻量级环境，用于系统还原、OTA升级、清空数据。第三方 Recovery (如 TWRP) 提供触摸屏、备份还原、刷入zip包等功能。</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>ROOT 权限</strong>
+        <p>安卓系统中相当于管理员权限，获得后可访问和修改所有系统文件、冻结应用、装载模块 (如Magisk)、修改host等。小天才手表 ROOT 后可解除安装限制、去除云控。</p>
+    </div>
+
+    <div class="section-title">
+        🔧 进阶相关概念
+    </div>
+    
+    <div class="term-item">
+        <strong>Magisk (魔法面具)</strong>
+        <p>目前最流行的无系统 ROOT 工具，支持隐藏 ROOT 状态、装载模块、修改 system 分区而不实际写入。常用模块：移除升级、解除第三方限制。</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>ADB (安卓调试桥)</strong>
+        <p>电脑与安卓设备通信的调试工具，可执行命令安装应用、传输文件、进入 fastboot/recovery。是刷机前必备的基础工具。</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>短接 (Deep Flash / 9008)</strong>
+        <p>当设备变砖或无法进入 fastboot 时，通过硬件短接两个测试点使设备进入深度刷机模式。这是高版本小天才手表唯一救砖/解锁的途径。</p>
+    </div>
+
+    <!-- ========= 机型短接参考 ========= -->
+    <div class="section-title">
+        ⏺️ 机型短接参考
+    </div>
+    
+    <div class="term-item">
+        <strong>Z9 / Z10 / 部分 Z8A</strong>
+        <p>6点短接进入线刷 (9008模式)</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>Z7 / Z8</strong>
+        <p>4点短接进入线刷</p>
+    </div>
+    
+    <div class="term-item">
+        <strong>重要提示</strong>
+        <p>不同机型测试点不可混用，短接错误可能导致无法识别设备。</p>
+    </div>
+
+<!-- ========= Z10特别提示（带图片） ========= -->
+<div class="warn-card important" style="width: 100%; box-sizing: border-box; padding: 10px; margin: 10px 0;">
+    <h3>📱 Z10(ND03) 特别提示</h3>
+    <p>使用 AllToolBox1.3.5 破解时，手表会出现 fastboot 界面：</p>
+    <!-- 修复图片显示的核心代码问题：补全样式+宽度+加载失败兜底 -->
+    <img 
+        src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastboot.jpg" 
+        alt="fastbootd界面" 
+        class="guide-img"
+        style="width: 100%; max-width: 500px; height: auto; display: block; margin: 10px 0; border: none;"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/wusannewcrack/touxianglianjie/main/fastboot.jpg'; this.onerror=null;"
+    >
+    <p>点击屏幕选中 <strong>"reboot to bootloader"</strong>，按开机键确认。</p>
+    <p style="color: #f0b34b;">进入bootloader后不要操作手表，继续在电脑端执行后续命令。</p>
+</div>
+
+    <!-- ========= ATB工具箱 ========= -->
+    <div class="section-title">
+        🛠️ ATB 工具箱功能
+    </div>
+    
+    <div class="term-item">
+        <p>✅ 一键获取ROOT权限 (适配小天才全系列)</p>
+        <p>✅ 防云控与系统校验关闭</p>
+        <p>✅ Magisk模块刷入与装载 (解除限制/去升级)</p>
+        <p>✅ 第三方应用免限制安装</p>
+        <p>✅ 线刷救砖与系统分区修复</p>
+    </div>
+    
+    <a href="https://atb.xy1.top" class="download-btn" target="_blank" style="margin: 10px 0 30px; display:block;">
+        🚀 前往 ATB 工具箱官网
+    </a>
+
+    <!-- 底部警示 -->
+    <div class="warn-card important" style="margin-top: 20px;">
+        <h3>操作提示</h3>
+        <p>短接、线刷、解锁Bootloader均存在设备变砖、数据丢失的风险。以上内容仅供技术研究与学习，实际操作请自行承担风险。</p>
+    </div>
+
+    <!-- ========= 开发者与鸣谢板块 ========= -->
+    <div class="credits-section">
+        <div class="credits-title">
+            👥 开发者与鸣谢
+            <span>致谢贡献者</span>
+        </div>
+        
+<div class="credits-grid">
+    <!-- 小伍游天下 - 短接教程 -->
+    <div class="credit-card">
+        <img 
+          src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xwytx.jpg" 
+          alt="小伍游天下" 
+          class="avatar-img"
+          onerror="this.src='https://picsum.photos/100/100';"
+        >
+        <h4>小伍游天下</h4>
+        <p>提供短接教程<br>9008模式进入方法</p>
+        <div class="credit-badge">短接教学</div>
+    </div>
+            
+    <!-- Skyinsult_Tista - ROOT教程 -->
+    <div class="credit-card">
+        <img 
+          src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/Skyinsult.jpg" 
+          alt="Skyinsult_Tista" 
+          class="avatar-img"
+          onerror="this.src='https://picsum.photos/100/100';"
+        >
+        <h4>Skyinsult_Tista</h4>
+        <p>提供ROOT教程<br>解锁+模块装载</p>
+        <div class="credit-badge">ROOT教学</div>
+    </div>
+            
+<!-- 小公爵快乐236等 - ATB工具箱 -->
+<div class="credit-card">
+    <img 
+      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xgj.jpg" 
+      alt="小公爵快乐236等" 
+      class="avatar-img"
+      onerror="this.src='https://picsum.photos/100/100';"
+    >
+    <h4>小公爵快乐236等</h4>
+    <p>开发ATB一键XTCROOT工具箱<br>全系列适配</p>
+    <div class="credit-badge">工具箱开发</div>
+</div>
+
+<!-- 伍潵 -->
+<div class="credit-card">
+    <img 
+      src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/wusan.jpg" 
+      alt="伍潵" 
+      class="avatar-img"
+      onerror="this.src='https://picsum.photos/100/100';"
+    >
+    <h4>伍潵</h4>
+    <p>网页 · 辅助制作<br>头像链接制作</p>
+    <div class="credit-badge">网页开发</div>
+</div>
+            
+    <!-- LIULANGZ - 网页制作者 -->
+    <div class="credit-card">
+        <img 
+          src="https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/LIULANGZ.jpg" 
+          alt="LIULANGZ" 
+          class="avatar-img"
+          onerror="this.src='https://picsum.photos/100/100';"
+        >
+           & lt;<   < !DOCTYPE html   超文本标记语言>h4>LIULANGZ</   & lt;h4>
+        <p>网页制作 · 资源整合<br>液态玻璃UI设计</   & lt;p>
+        <div class="credit-badge">网页开发</div><div class   类="credit-badge">网页开发</   & lt;div>
+    </div>   < / div>
+</div>   < / div>
+
+    <!-- 简单页脚 -->
+    <div class="footer">   <div class   类="footer">
+        © 2026 小天才整合ROOT站
+    </div>   < / div>
+</div>   < / div>
+
+<script>   < script>
 // 水波纹效果
 function createRipple(event) {createRipple（事件）{
-    const card = event.currentTarget;const card = event. currentarget；
-    const existingRipple = card.querySelector('.ripple');const existingRipple = card.querySelector('.ripple')；
-    if (existingRipple) existingRipple.remove();如果（existingRipple） existingRipple.remove()；
+    const card = event.currentTarget;const   常量   卡 card      卡卡 = event   事件. currentarget；   currentarget;
+    const existingRipple = card.querySelector('.ripple');const   常量 existingRipple = card   卡.querySelector('.ripple'   “.ripple”)；
+    if (existingRipple) existingRipple.remove();如果（existingRipple） existingRipple.remove   删除()；
 
-    const ripple = document.createElement('span');const ripple = document.createElement('span')；
-    ripple.classList.add('ripple');ripple.classList.add(“脉动”);
+    const ripple = document.createElement('span');const   常量   涟漪 ripple      涟漪涟漪 = document   文档.createElement('span'   “跨越”)；
+    ripple.classList.add('ripple');ripple   涟漪.classList   班级名册.add   添加(“脉动”);
 
-    const rect = card.getBoundingClientRect();const rect = card.getBoundingClientRect()；
-    const size = Math.max(rect.width, rect.height) * 0.9;const size = Math.max(宽度，矩形。高度)* 0.9；
-    const x = (event.clientX || (event.touches && event.touches[0].clientX)) - rect.left - size / 2;Const x =（事件）。clientX ||(事件。触摸&；&；事件。触摸[0]。clientX)) - rect.left   左 - size / 2；
-    const y = (event.clientY || (event.touches && event.touches[0].clientY)) - rect.top - size / 2;Const y =（事件）。clientY ||(事件。触摸&；&；事件。触摸[0]。clientY)) - rect.top   前 - size / 2；
+    const rect = card.getBoundingClientRect();const   常量   矩形 rect      矩形矩形 = card   卡.getBoundingClientRect()；
+    const size = Math.max(rect.width, rect.height) * 0.9;const   常量   大小 size      大小大小 = Math   数学.max   马克斯(宽度，矩形。高度)* 0.9；
+    const x = (event.clientX || (event.touches && event.touches[0].clientX)) - rect.left - size / 2;Const    常量x =（事件）。clientX ||(事件。触摸&；&；事件。触摸[0]。clientX)) - rect   矩形.left   左 - size   大小 / 2；
+    const y = (event.clientY || (event.touches && event.touches[0].clientY)) - rect.top - size / 2;Const    常量y =（事件）。clientY ||(事件。触摸&；&；事件。触摸[0]。clientY)) - rect   矩形.top   前 - size   大小 / 2；
 
-    ripple.style.width = ripple.style.height = size + 'px';style   风格.width   宽度 = style   风格.height   高度 = size 'px'；
-    ripple.style.left = x + 'px';style   风格.left   左 = x' px'；
-    ripple.style.top = y + 'px';   style   风格.top   前 = y 'px'；
+    ripple.style.width = ripple.style.height = size + 'px';style   风格.width   宽度 = style   风格.height   高度 = size    大小'px'   “像素”；
+    ripple.style.left = x + 'px';style   风格.left   左 = x' px'   “像素”；
+    ripple.style.top = y + 'px';   style   风格.top   前 = y 'px'   “像素”；
 
-    card.appendChild(ripple);card.appendChild(连锁);
-    ripple.addEventListener('animationend', () => ripple.remove());涟漪。addEventListener('animationend', () => ripple.remove())；
+    card.appendChild(ripple);card   卡.appendChild   列表末尾(连锁);
+    ripple.addEventListener('animationend', () => ripple.remove());涟漪。addEventListener('animationend'   animationend”, () => ripple   涟漪.remove   删除())；
 }
 
 // 卡片内链接阻止冒泡
-document.querySelectorAll('.card a, .warn-card a, .download-btn').forEach(link => {document.querySelectorAll('.card '，。警告卡a， .download-btn')。forEach(link => {
-    link.addEventListener('click', (e) => {链接。addEventListener('click', (e) => {
+document.querySelectorAll('.card a, .warn-card a, .download-btn').forEach(link => {document   文档.querySelectorAll('.card '   “.card”，。警告卡a， .download   下载-btn')。forEach(link => {   ')。forEach(link => {
+    link.addEventListener('click', (e) => {链接。addEventListener('click'   “点击”, (e) => {
         e.stopPropagation();
     });
 });
 
 // 绑定卡片点击波纹
-document.querySelectorAll('.card').forEach(card => {document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', createRipple);卡。addEventListener(’click’,createRipple);
+document.querySelectorAll('.card').forEach(card => {document   文档.querySelectorAll('.card'   “.card”).forEach(card   卡 => {
+    card.addEventListener('click', createRipple);卡。addEventListener(’click’   ’click’,createRipple);
 });
-    </script>
+</script>   < / script>
 </body>   < / body>
-</html>
+</html>   < / html>
