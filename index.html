@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>小天才资源整合站 · ROOT </title>
+  <title>小天才ROOT</title>
   <style>
     /* ---------- 全局重置 & 主题变量 ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      /* 移动端禁止文本选择，减少交互卡顿 */
-      -webkit-user-select: none;
-      user-select: none;
-      /* 禁用点击高亮 */
-      -webkit-tap-highlight-color: transparent;
+      /* 已删除禁止文本选择的样式，恢复复制功能 */
+      -webkit-tap-highlight-color: transparent; /* 仅禁用点击高亮，保留复制 */
     }
 
     body {
@@ -42,12 +39,10 @@
       --term-block-bg: rgba(20, 32, 52, 0.7);
       --credit-item-bg: rgba(22, 34, 56, 0.7);
       transition: all 0.5s ease;
-      /* 关键：开启硬件加速，减少滚动卡顿 */
       -webkit-overflow-scrolling: touch;
       overflow-scrolling: touch;
     }
 
-    /* 动态光影背景 — 移动端弱化动画 */
     body::before {
       content: '';
       position: fixed;
@@ -58,16 +53,14 @@
         radial-gradient(circle at 40% 60%, rgba(25, 60, 150, 0.25) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
-      /* 移动端降低动画频率，减少GPU消耗 */
       animation: breatheGlow 20s ease-in-out infinite alternate;
-      /* 硬件加速 */
       transform: translateZ(0);
       will-change: opacity, filter;
     }
 
     @keyframes breatheGlow {
       0% { opacity: 0.6; filter: blur(0px); }
-      100% { opacity: 1; filter: blur(1px); } /* 移动端降低模糊度 */
+      100% { opacity: 1; filter: blur(1px); }
     }
 
     .container {
@@ -76,13 +69,11 @@
       position: relative;
       z-index: 3;
       animation: containerFadeIn 0.9s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
-    /* 功能按钮容器 - 移动端优化 */
     .function-buttons {
-      position: relative; /* 移动端默认改为相对定位，避免遮挡 */
+      position: relative;
       top: 0;
       right: 0;
       display: flex;
@@ -92,7 +83,6 @@
       justify-content: center;
     }
 
-    /* 功能按钮样式 */
     .func-btn {
       background: var(--bg-card);
       backdrop-filter: blur(18px) saturate(200%);
@@ -108,9 +98,11 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      /* 硬件加速 */
       transform: translateZ(0);
       will-change: transform, box-shadow, border-color;
+      /* 按钮仍禁止选择（避免误选），不影响其他文本 */
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .func-btn:hover {
@@ -122,18 +114,16 @@
     /* 列表视图切换样式 - 默认列表模式 */
     .grid-2 {
       display: grid;
-      grid-template-columns: 1fr; /* 默认单列（列表模式） */
+      grid-template-columns: 1fr;
       gap: 1.8rem;
       margin-bottom: 2rem;
       transition: all 0.3s ease;
     }
 
-    /* 仅在大屏下，切换网格时显示双列 */
     @media (min-width: 768px) {
-      .grid-2:not(.list-view) { /* 只有非列表模式才显示双列 */
+      .grid-2:not(.list-view) {
         grid-template-columns: repeat(2, 1fr);
       }
-      /* 大屏恢复按钮绝对定位 */
       .function-buttons {
         position: absolute;
         top: 2rem;
@@ -143,7 +133,6 @@
       }
     }
 
-    /* 公告弹窗样式（优化移动端滚动） */
     .notice-modal {
       position: fixed;
       top: 0;
@@ -157,7 +146,6 @@
       align-items: center;
       z-index: 100;
       padding: 1rem;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
@@ -166,13 +154,12 @@
       backdrop-filter: blur(20px);
       border-radius: 2rem;
       border: 1px solid var(--border-color);
-      padding: 2rem 1.5rem; /* 移动端减少内边距 */
+      padding: 2rem 1.5rem;
       max-width: 600px;
-      width: 90%; /* 移动端适配宽度 */
+      width: 90%;
       box-shadow: 0 25px 50px -12px var(--shadow-primary);
       position: relative;
       animation: modalFadeIn 0.4s ease-out;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
@@ -191,6 +178,8 @@
       transition: all 0.2s;
       background: none;
       border: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .close-modal:hover {
@@ -206,19 +195,16 @@
       padding-left: 1rem;
     }
 
-    /* 公告列表样式（优化移动端滚动） */
     .modal-text {
       color: var(--text-secondary);
       line-height: 1.8;
       margin-bottom: 2rem;
-      max-height: 50vh; /* 移动端降低最大高度 */
+      max-height: 50vh;
       overflow-y: auto;
       padding-right: 0.5rem;
-      /* 移动端开启原生滚动 */
       -webkit-overflow-scrolling: touch;
     }
 
-    /* 滚动条美化 - 移动端简化 */
     .modal-text::-webkit-scrollbar {
       width: 4px;
     }
@@ -279,8 +265,9 @@
       font-weight: 500;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.25s ease;
-      /* 硬件加速 */
       transform: translateZ(0);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .modal-btn:hover {
@@ -294,14 +281,12 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* 标题区 — 移动端优化 */
     .global-header {
       margin-bottom: 3.2rem;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 1.8rem;
       transform-origin: left;
       animation: slideInHeader 0.7s ease-out;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
@@ -311,7 +296,7 @@
     }
 
     .global-header h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem); /* 响应式字体 */
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
       font-weight: 520;
       letter-spacing: -1px;
       background: linear-gradient(135deg, #fff 20%, #b8d5ff 80%);
@@ -319,9 +304,8 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.2rem;
-      /* 移动端弱化发光效果，减少性能消耗 */
       text-shadow: 0 0 15px #3a74ff60;
-      animation: softGlow 5s infinite alternate; /* 降低动画频率 */
+      animation: softGlow 5s infinite alternate;
     }
 
     @keyframes softGlow {
@@ -336,7 +320,6 @@
       text-transform: uppercase;
     }
 
-    /* 统一毛玻璃卡片 — 移动端优化动画 */
     .glass-card {
       background: var(--bg-card);
       backdrop-filter: blur(18px) saturate(200%);
@@ -344,20 +327,18 @@
       border-radius: 2.4rem;
       border: 1px solid var(--border-color);
       box-shadow: 0 25px 45px -14px var(--shadow-primary), inset 0 1px 1px #ffffff30;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2); /* 缩短过渡时间 */
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
       animation: cardFloatInit 0.6s ease-out backwards;
       will-change: transform, box-shadow, border-color;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
     .glass-card:hover {
       border-color: rgba(160, 210, 255, 0.6);
       box-shadow: 0 35px 65px -12px var(--shadow-secondary), inset 0 1px 3px #ffffff70;
-      transform: translateY(-5px) scale(1.005); /* 移动端弱化悬浮效果 */
+      transform: translateY(-5px) scale(1.005);
     }
 
-    /* 卡片入场 stagger 效果 */
     .grid-2 .glass-card:nth-child(1) { animation-delay: 0.1s; }
     .grid-2 .glass-card:nth-child(2) { animation-delay: 0.2s; }
 
@@ -367,14 +348,14 @@
     }
 
     .info-card {
-      padding: 2rem 1.5rem; /* 移动端减少内边距 */
+      padding: 2rem 1.5rem;
       cursor: pointer;
       position: relative;
       isolation: isolate;
     }
 
     .info-card h3 {
-      font-size: clamp(1.5rem, 4vw, 1.9rem); /* 响应式字体 */
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
       font-weight: 500;
       color: var(--text-primary);
       margin-bottom: 1rem;
@@ -397,11 +378,10 @@
     }
     .info-card:hover p { color: var(--text-primary); }
 
-    /* 精致链接按钮 - 移动端优化 */
     .card-link {
       display: inline-flex;
       align-items: center;
-      padding: 0.8rem 2rem; /* 移动端减少内边距 */
+      padding: 0.8rem 2rem;
       background: rgba(35, 60, 110, 0.65);
       backdrop-filter: blur(10px);
       border-radius: 3rem;
@@ -410,13 +390,14 @@
       font-weight: 500;
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 12px 22px -10px var(--shadow-primary);
-      transition: all 0.2s ease; /* 缩短过渡时间 */
+      transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
       margin-right: 0.8rem;
       margin-bottom: 0.8rem;
-      /* 硬件加速 */
       transform: translateZ(0);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .card-link::after {
@@ -432,28 +413,26 @@
       background: rgba(55, 90, 160, 0.9);
       border-color: #9cc0ff;
       box-shadow: 0 18px 30px -6px var(--shadow-primary);
-      transform: translateY(-2px); /* 移动端弱化悬浮效果 */
+      transform: translateY(-2px);
     }
 
     .card-link:active { transform: translateY(1px); }
 
-    /* 警示区块 - 移动端优化 */
     .notice-block {
       background: var(--notice-bg);
       backdrop-filter: blur(18px);
       border-radius: 2.4rem;
-      padding: 1.8rem 2rem; /* 移动端减少内边距 */
+      padding: 1.8rem 2rem;
       margin: 2.5rem 0;
       border-left: 8px solid;
-      transition: transform 0.2s, box-shadow 0.3s; /* 缩短过渡时间 */
-      animation: blockGlow 8s infinite alternate; /* 降低动画频率 */
-      /* 硬件加速 */
+      transition: transform 0.2s, box-shadow 0.3s;
+      animation: blockGlow 8s infinite alternate;
       transform: translateZ(0);
       will-change: transform, box-shadow;
     }
 
     .notice-block:hover {
-      transform: scale(1.005) translateY(-2px); /* 移动端弱化悬浮效果 */
+      transform: scale(1.005) translateY(-2px);
       box-shadow: 0 35px 45px -12px var(--shadow-primary);
     }
 
@@ -477,7 +456,7 @@
     }
 
     .notice-block h4 {
-      font-size: clamp(1.4rem, 3vw, 1.7rem); /* 响应式字体 */
+      font-size: clamp(1.4rem, 3vw, 1.7rem);
       font-weight: 450;
       color: var(--text-primary);
       margin-bottom: 1rem;
@@ -497,8 +476,9 @@
       color: var(--text-secondary);
       border: 1px solid #5f85d150;
       transition: 0.15s;
-      /* 硬件加速 */
       transform: translateZ(0);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .meta-tag:hover {
@@ -506,18 +486,16 @@
       color: white;
     }
 
-    /* 资源大合集 - 移动端优化 */
     .resource-vault {
       background: var(--vault-bg);
       backdrop-filter: blur(26px);
       border-radius: 3.2rem;
-      padding: 2.5rem 2rem; /* 移动端减少内边距 */
+      padding: 2.5rem 2rem;
       margin: 3.5rem 0;
       border: 1px solid #5980dd40;
       box-shadow: 0 30px 50px -18px var(--shadow-primary);
       transition: 0.3s;
-      animation: vaultPulse 10s infinite alternate; /* 降低动画频率 */
-      /* 硬件加速 */
+      animation: vaultPulse 10s infinite alternate;
       transform: translateZ(0);
       will-change: border-color, box-shadow;
     }
@@ -537,29 +515,30 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 2rem;
-      gap: 1rem; /* 移动端增加间距，防止换行重叠 */
+      gap: 1rem;
     }
     .vault-header h2 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem); /* 响应式字体 */
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
       font-weight: 480;
       color: var(--text-primary);
     }
     .primary-btn {
       background: rgba(40, 75, 145, 0.85);
       backdrop-filter: blur(12px);
-      padding: 1rem 2.5rem; /* 移动端减少内边距 */
+      padding: 1rem 2.5rem;
       border-radius: 4rem;
       text-decoration: none;
       color: white;
       font-weight: 600;
-      font-size: clamp(1rem, 2vw, 1.3rem); /* 响应式字体 */
+      font-size: clamp(1rem, 2vw, 1.3rem);
       border: 1px solid #90b5ff;
       box-shadow: 0 20px 32px -12px var(--shadow-primary);
-      transition: all 0.2s; /* 缩短过渡时间 */
+      transition: all 0.2s;
       position: relative;
       overflow: hidden;
-      /* 硬件加速 */
       transform: translateZ(0);
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .primary-btn::before {
@@ -579,20 +558,18 @@
       box-shadow: 0 28px 45px -8px var(--shadow-primary);
     }
 
-    /* 网格项目 - 移动端优化 */
     .res-item {
       background: var(--res-item-bg);
       backdrop-filter: blur(8px);
       border-radius: 2rem;
       padding: 1.8rem;
       border-left: 6px solid #4f71b5;
-      transition: 0.2s; /* 缩短过渡时间 */
-      /* 硬件加速 */
+      transition: 0.2s;
       transform: translateZ(0);
     }
 
     .res-item:hover {
-      transform: translateY(-3px) scale(1.005); /* 移动端弱化悬浮效果 */
+      transform: translateY(-3px) scale(1.005);
       border-left-color: #99beff;
       background: rgba(30, 48, 76, 0.8);
     }
@@ -606,23 +583,21 @@
       color: var(--text-primary);
     }
 
-    /* 术语卡片 - 移动端优化 */
     .term-block {
       background: var(--term-block-bg);
       backdrop-filter: blur(10px);
       border-radius: 2rem;
-      padding: 1.5rem 2rem; /* 移动端减少内边距 */
+      padding: 1.5rem 2rem;
       margin-bottom: 1.2rem;
       border-left: 6px solid #36548b;
       transform-origin: left;
       animation: termSlide 0.5s ease-out backwards;
       transition: all 0.2s;
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
     .term-block:hover {
-      border-left-width: 8px; /* 移动端弱化悬浮效果 */
+      border-left-width: 8px;
       border-left-color: #789cf0;
       background: #1f2f50;
     }
@@ -639,34 +614,29 @@
     .term-block:nth-child(6) { animation-delay: 0.35s; }
     .term-block:nth-child(7) { animation-delay: 0.4s; }
 
-    /* 图片 + 光晕 - 移动端优化 */
     .guide-img {
       max-width: 100%;
       border-radius: 1.8rem;
       border: 2px solid #5480dd60;
       box-shadow: 0 22px 38px -12px var(--shadow-primary);
-      transition: 0.3s; /* 缩短过渡时间 */
+      transition: 0.3s;
       display: block;
-      /* 硬件加速 */
       transform: translateZ(0);
-      /* 图片懒加载占位 */
       background: #141e30;
     }
 
     .guide-img:hover {
       border-color: #a6c5ff;
       box-shadow: 0 30px 55px -8px var(--shadow-secondary);
-      transform: scale(1.005); /* 移动端弱化悬浮效果 */
+      transform: scale(1.005);
     }
 
-    /* 开发者网格 - 移动端优化 */
     .credit-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 移动端默认2列 */
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.6rem;
       margin: 3rem 0 2rem;
     }
-    /* 大屏显示5列 */
     @media (min-width: 768px) {
       .credit-grid {
         grid-template-columns: repeat(5, 1fr);
@@ -676,14 +646,15 @@
       background: var(--credit-item-bg);
       backdrop-filter: blur(16px);
       border-radius: 2.4rem;
-      padding: 1.8rem 1rem 1.5rem; /* 移动端减少内边距 */
+      padding: 1.8rem 1rem 1.5rem;
       text-align: center;
       border: 1px solid #ffffff12;
-      transition: all 0.2s cubic-bezier(0.2,0.8,0.4,1); /* 缩短过渡时间 */
+      transition: all 0.2s cubic-bezier(0.2,0.8,0.4,1);
       animation: creditFade 0.6s backwards;
-      /* 硬件加速 */
       transform: translateZ(0);
       will-change: transform, border-color, background;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .credit-item:nth-child(1) { animation-delay: 0.1s; }
@@ -703,14 +674,14 @@
     }
 
     .credit-item:hover {
-      transform: translateY(-5px) scale(1.01); /* 移动端弱化悬浮效果 */
+      transform: translateY(-5px) scale(1.01);
       border-color: #6a97ff60;
       background: #1e3052;
       box-shadow: 0 20px 30px -12px var(--shadow-primary);
     }
 
     .avatar {
-      width: 80px; /* 移动端缩小头像 */
+      width: 80px;
       height: 80px;
       border-radius: 50%;
       margin: 0 auto 1.2rem;
@@ -718,32 +689,29 @@
       border: 3px solid transparent;
       transition: 0.3s;
       box-shadow: 0 15px 25px -8px var(--shadow-primary);
-      /* 硬件加速 + 懒加载 */
       transform: translateZ(0);
-      background: #141e30; /* 占位背景 */
+      background: #141e30;
     }
     .credit-item:hover .avatar {
       border-color: #9bbaff;
-      transform: rotate(2deg) scale(1.03); /* 移动端弱化悬浮效果 */
+      transform: rotate(2deg) scale(1.03);
     }
 
-    /* 水波纹增强 - 移动端优化 */
     .ripple-effect {
       position: absolute;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(200,220,255,0.2) 80%);
       transform: scale(0);
-      animation: rippleExpand 0.6s ease-out forwards; /* 缩短动画时间 */
+      animation: rippleExpand 0.6s ease-out forwards;
       pointer-events: none;
       z-index: 15;
       backdrop-filter: blur(4px);
-      /* 硬件加速 */
       transform: translateZ(0);
     }
 
     @keyframes rippleExpand {
       0% { transform: scale(0); opacity: 0.6; }
-      100% { transform: scale(6); /* 移动端缩小波纹 */ opacity: 0; }
+      100% { transform: scale(6); opacity: 0; }
     }
 
     .footer-note {
@@ -752,7 +720,7 @@
       color: var(--text-secondary);
       border-top: 1px solid #30447040;
       animation: fadeIn 1s;
-      font-size: 0.9rem; /* 移动端缩小字体 */
+      font-size: 0.9rem;
     }
 
     @keyframes fadeIn {
@@ -760,9 +728,7 @@
       100% { opacity: 1; }
     }
 
-    /* 移动端额外优化 */
     @media (max-width: 768px) {
-      /* 禁用部分高消耗动画 */
       .global-header h1 {
         animation: none;
         text-shadow: 0 0 10px #3a74ff60;
@@ -770,11 +736,9 @@
       .notice-block, .resource-vault {
         animation: none;
       }
-      /* 减少卡片阴影复杂度 */
       .glass-card, .credit-item {
         box-shadow: 0 10px 20px -8px var(--shadow-primary);
       }
-      /* 简化毛玻璃效果 */
       .glass-card, .notice-block, .resource-vault {
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -784,7 +748,6 @@
 </head>
 <body>
 <div class="container">
-  <!-- 功能按钮区域 - 默认显示"切换网格" -->
   <div class="function-buttons">
     <button class="func-btn" id="listToggle">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -800,13 +763,11 @@
     </button>
   </div>
 
-  <!-- 头部 -->
   <div class="global-header">
     <h1>小天才ROOT</h1>
     <div class="sub">深度索引 · 动态玻璃</div>
   </div>
 
-  <!-- 快速入口 - 默认list-view类（列表模式） -->
   <div style="margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); letter-spacing: 1.2px;">核心入口</span>
@@ -835,7 +796,6 @@
     </div>
   </div>
 
-  <!-- QQ群 - 默认list-view类（列表模式） -->
   <div style="margin: 2.2rem 0 1rem; display: flex; align-items: center;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); margin-left: 0.8rem;">QQ群</span>
@@ -855,7 +815,6 @@
     </div>
   </div>
 
-  <!-- B站教程 - 默认list-view类（列表模式） -->
   <div style="margin: 2.2rem 0 1rem; display: flex; align-items: center;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); margin-left: 0.8rem;">视频教程 · 伍潵/小伍游天下 / Skyinsult</span>
@@ -895,7 +854,6 @@
       </div>
     </div>
 
-  <!-- 提示 -->
   <div class="notice-block amber">
     <h4>操作前必读</h4>
     <p>按照工具提示逐步进行，不要跳过或断开连接。报错可去群里询问[859479768/907491503]。</p>
@@ -906,7 +864,6 @@
     </div>
   </div>
 
-  <!-- 资源合集 -->
   <div class="resource-vault">
     <div class="vault-header">
       <h2>小天才教程资源合集 <span style="font-size:1.2rem; background:#20345880; padding:0.3rem 1.2rem; border-radius:4rem;">按需选择</span></h2>
@@ -916,19 +873,16 @@
     </div>
   </div>
 
-  <!-- 高版本限制 -->
   <div class="notice-block red">
     <h4>高版本机型限制说明</h4>
     <p>高版本机型无法通过常规方式开启开发者选项，必须通过短接进入QMMI模式后进行操作，详细请看伍潵的开adb教程。</p>
   </div>
 
-  <!-- 术语锚点 -->
   <div id="terms-section" style="margin: 2.8rem 0 1.5rem; display: flex; align-items: center;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); margin-left: 0.8rem;">术语百科 · 基础与进阶</span>
   </div>
 
-  <!-- 术语卡片 -->
   <div class="term-block"><strong> Bootloader(启动引导程序)</strong><p>是设备开机后最先运行的底层引导程序，负责初始化硬件、校验系统完整性。</p></div>
   <div class="term-block"><strong>Fastboot (线刷协议)</strong><p>是安卓手机Bootloader 模式下的线刷协议与工具，用于电脑通过 USB 直接读写设备分区，实现刷入镜像等底层操作。</p></div>
   <div class="term-block"><strong>Recovery[twrp] (恢复模式)</strong><p>是第三方定制的安卓恢复环境，用来替代官方 Recovery，刷入第三方ROM、ROOT、清除数据等高级刷机操作。</p></div>
@@ -937,7 +891,6 @@
   <div class="term-block"><strong>ADB (安卓调试桥)</strong><p>电脑与安卓设备通信的调试工具，可执行命令安装应用、传输文件、进入 fastboot/recovery。</p></div>
   <div class="term-block"><strong>短接 (EDL模式 / 9008端口)</strong><p>当设备变砖或无法进入 fastboot 时，通过硬件短接两个测试点使设备进入深度刷机模式。高版本小天才重要途径。</p></div>
 
-  <!-- Z10特别提示 -->
   <div style="margin: 2.2rem 0 1rem;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); margin-left: 0.8rem;">短接参考 · Z10(ND03) 特别提示</span>
@@ -947,13 +900,12 @@
     <p>使用 AllToolBox1.3.5 破解时，手表会出现 fastboot 界面：</p>
     <img src="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastbootd1.jpg" 
          alt="fastbootd界面" class="guide-img" style="max-width:480px;"
-         loading="lazy"  <!-- 关键：图片懒加载 -->
+         loading="lazy"
          onerror="this.src='https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastboot.jpg'">
     <p style="margin-top:1rem;">点击屏幕选中 <strong>"reboot to bootloader"</strong>，按开机键确认。进入bootloader后不要操作手表，继续在电脑端执行后续命令。</p>
     <div class="meta-tags"><span class="meta-tag">Z9 / Z10 / 部分Z8A : 6点短接</span></div>
   </div>
 
-  <!-- ATB工具箱功能 -->
   <div style="margin: 2.8rem 0 1.2rem;">
     <div style="width: 6px; height: 2rem; background: var(--accent-color); border-radius: 6px;"></div>
     <span style="color: var(--text-secondary); margin-left: 0.8rem;">ATB 工具箱功能</span>
@@ -971,7 +923,6 @@
     </div>
   </div>
 
-  <!-- 开发者鸣谢 -->
   <div style="margin: 4rem 0 2rem;">
     <div style="width: 6px; height: 2rem; background: #566e9c; border-radius: 6px;"></div>
     <span style="color: #adc6f0; margin-left: 0.8rem;">开发者 · 鸣谢</span>
@@ -989,7 +940,6 @@
     <div class="credit-item"><img src="http://q.qlogo.cn/g?b=qq&nk=2220978098&s=640" alt="help" class="avatar" loading="lazy" onerror="this.src='https://picsum.photos/100/100?random=5'"><h4>昔涟</h4><div class="role">ATB工具箱开发者</div></div>
   </div>
 
-  <!-- 底部提示 -->
   <div class="notice-block amber" style="margin-top: 2rem;">
     <h4>最终提示</h4>
     <p>短接、线刷、解锁Bootloader均存在设备变砖、数据丢失的风险。以上内容仅供技术研究与学习，实际操作请自行承担风险。</p>
@@ -997,7 +947,6 @@
   <div class="footer-note">© 2026 小天才ROOT · 动态玻璃版</div>
 </div>
 
-<!-- 公告弹窗 -->
 <div class="notice-modal" id="noticeModal">
   <div class="modal-content">
     <button class="close-modal" id="closeModal">&times;</button>
@@ -1009,6 +958,7 @@
         <div style="color: #ecf2fc; line-height: 1.8; font-size: 1.1rem;">
           1. 新增列表/网格双模式切换，默认列表模式<br>
           2. 优化移动端滚动流畅度，减少卡顿<br>
+          3. 恢复文字复制功能，仅保留按钮/标签的禁止选择
         </div>
       </div>
     </div>
@@ -1016,12 +966,9 @@
   </div>
 </div>
 
-<!-- 核心交互逻辑 - 优化移动端性能 -->
 <script>
-  // 水波纹效果 - 防抖优化
   let rippleTimer = null;
   function handleRipple(event) {
-    // 防抖：避免快速点击重复创建波纹
     if (rippleTimer) clearTimeout(rippleTimer);
     
     const card = event.currentTarget;
@@ -1041,19 +988,16 @@
     ripple.style.position = 'absolute';
     card.appendChild(ripple);
     
-    // 自动清理波纹元素
     rippleTimer = setTimeout(() => {
       ripple.remove();
       rippleTimer = null;
     }, 700);
   }
 
-  // 阻止链接冒泡
   document.querySelectorAll('.card-link, .primary-btn').forEach(link => {
     link.addEventListener('click', e => e.stopPropagation());
   });
 
-  // 绑定卡片波纹 - 委托方式减少事件监听
   document.querySelector('.container').addEventListener('click', function(e) {
     const card = e.target.closest('.glass-card.info-card');
     if (card) {
@@ -1061,7 +1005,6 @@
     }
   });
 
-  // 列表/网格切换逻辑（默认列表模式）
   const listToggle = document.getElementById('listToggle');
   const allGridContainers = document.querySelectorAll('.grid-2');
   
@@ -1075,55 +1018,45 @@
       : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg> 切换列表';
   });
 
-  // 公告弹窗 - 优化移动端体验
   const noticeBtn = document.getElementById('noticeBtn');
   const noticeModal = document.getElementById('noticeModal');
   const closeModal = document.getElementById('closeModal');
   const modalBtn = document.querySelector('.modal-btn');
 
-  // 打开弹窗
   noticeBtn.addEventListener('click', () => {
     noticeModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    // 移动端禁止触摸缩放
     document.documentElement.style.touchAction = 'none';
   });
 
-  // 关闭弹窗
   function closeNoticeModal() {
     noticeModal.style.display = 'none';
     document.body.style.overflow = 'auto';
-    // 恢复触摸缩放
     document.documentElement.style.touchAction = 'auto';
   }
 
   closeModal.addEventListener('click', closeNoticeModal);
   modalBtn.addEventListener('click', closeNoticeModal);
 
-  // 点击外部关闭
   noticeModal.addEventListener('click', (e) => {
     if (e.target === noticeModal) closeNoticeModal();
   });
 
-  // ESC关闭
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && noticeModal.style.display === 'flex') {
       closeNoticeModal();
     }
   });
 
-  // 平滑滚动 - 移动端优化
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        // 移动端使用原生滚动，更流畅
         if ('scrollBehavior' in document.documentElement.style) {
           targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          // 降级方案：手动滚动
           window.scrollTo({
             top: targetElement.offsetTop - 20,
             behavior: 'smooth'
@@ -1133,20 +1066,16 @@
     });
   });
 
-  // 移动端性能优化：滚动时暂停动画
   let scrollTimer = null;
   window.addEventListener('scroll', () => {
-    // 添加滚动状态类
     document.body.classList.add('is-scrolling');
     
-    // 防抖：滚动停止后移除类
     if (scrollTimer) clearTimeout(scrollTimer);
     scrollTimer = setTimeout(() => {
       document.body.classList.remove('is-scrolling');
     }, 100);
-  }, { passive: true }); // 被动监听，提升滚动性能
+  }, { passive: true });
 
-  // 图片懒加载失败降级
   document.querySelectorAll('img[loading="lazy"]').forEach(img => {
     img.addEventListener('error', function() {
       this.src = `https://picsum.photos/100/100?random=${Math.floor(Math.random() * 100)}`;
