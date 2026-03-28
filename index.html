@@ -1096,20 +1096,5 @@ themeToggle.onclick = function() {
   updateTheme(next);
 };
 </script>
-<script>
-(async function logVisitor() {
-  try {
-    const ipRes = await fetch('https://api.ipify.org?format=json');
-    const { ip } = await ipRes.json();
-    const time = new Date().toLocaleString();
-
-    await fetch('https://api.npoint.io/5d7f8e8c3b2a10987654', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ip, time })
-    });
-  } catch (e) {}
-})();
-</script>
 </body>
 </html>
