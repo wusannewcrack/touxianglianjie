@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.location.href = "https://xtczysq.rth1.xyz/";
+  }
+}
+</script>
+
   <title>小天才资源整合站 · ROOT </title>
   <style>
     /* ---------- 全局重置 & 主题变量 ---------- */
@@ -12,8 +21,11 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #0a0c15;
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       color: #ecf2fc;
       line-height: 1.5;
@@ -21,7 +33,9 @@
       position: relative;
       min-height: 100vh;
       overflow-x: hidden;
-      /* 固定深色主题（删除亮色切换） */
+      transition: background-color 0.3s ease, color 0.2s ease;
+      
+      /* 默认深色主题变量 */
       --bg-primary: #0a0c15;
       --bg-card: rgba(18, 26, 40, 0.6);
       --border-color: rgba(130, 180, 255, 0.2);
@@ -37,7 +51,30 @@
       --res-item-bg: rgba(20, 34, 54, 0.7);
       --term-block-bg: rgba(20, 32, 52, 0.7);
       --credit-item-bg: rgba(22, 34, 56, 0.7);
-      transition: all 0.5s ease;
+    }
+
+    /* 浅色主题 */
+    body[data-theme="light"] {
+      --bg-primary: #f5f7fc;
+      --bg-card: rgba(245, 248, 255, 0.85);
+      --border-color: rgba(60, 100, 160, 0.25);
+      --text-primary: #1a2634;
+      --text-secondary: #4a5b7a;
+      --accent-color: #3f6ac0;
+      --accent-hover: #2b4f9e;
+      --shadow-primary: rgba(0, 0, 0, 0.1);
+      --shadow-secondary: rgba(0, 0, 0, 0.15);
+      --notice-bg: rgba(235, 240, 250, 0.85);
+      --vault-bg: rgba(240, 245, 255, 0.9);
+      --meta-tag-bg: rgba(210, 225, 245, 0.8);
+      --res-item-bg: rgba(240, 245, 255, 0.85);
+      --term-block-bg: rgba(235, 242, 255, 0.85);
+      --credit-item-bg: rgba(240, 245, 255, 0.85);
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
     }
 
     /* 动态光影背景 — 呼吸效果 */
@@ -45,13 +82,20 @@
       content: '';
       position: fixed;
       inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      transition: opacity 0.3s;
+    }
+    body[data-theme="dark"]::before {
       background: 
         radial-gradient(circle at 20% 30%, rgba(40, 120, 240, 0.2) 0%, transparent 45%),
         radial-gradient(circle at 90% 70%, rgba(70, 140, 255, 0.15) 0%, transparent 55%),
         radial-gradient(circle at 40% 60%, rgba(25, 60, 150, 0.25) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
       animation: breatheGlow 12s ease-in-out infinite alternate;
+    }
+    body[data-theme="light"]::before {
+      background: none;
+      animation: none;
     }
 
     @keyframes breatheGlow {
@@ -688,9 +732,9 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
 <div class="container">
-  <!-- 功能按钮区域（删除颜色切换，保留列表切换+公告） -->
+  <!-- 功能按钮区域（新增主题切换） -->
   <div class="function-buttons">
     <button class="func-btn" id="listToggle">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -698,6 +742,7 @@
       </svg>
       切换列表
     </button>
+    <button class="func-btn" id="themeToggle">🌙 主题</button>
     <button class="func-btn" id="noticeBtn">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
@@ -726,12 +771,31 @@
     <a href="https://atb.wear1.top" class="card-link" target="_blank">访问官网2 →</a>
     <a href="https://atb.xy1.top" class="card-link" target="_blank">访问官网3 →</a>
     <a href="http://atb.corecloud.cc/" class="card-link" target="_blank">访问官网4 →</a>
+    <a href="http://atb.xtc.icu/" class="card-link" target="_blank">访问官网5 →</a>
+  </div>
+
+  <div class="glass-card info-card" onclick="handleRipple(event)">
+    <h3>此站分站</h3>
+    <p>小喵是我呀 · 建分站者</p>
+    <a href="https://xtczysq.rth1.xyz/" class="card-link" target="_blank">访问分站 →</a>
   </div>
 
   <div class="glass-card info-card" onclick="handleRipple(event)">
     <h3>友链</h3>
     <p>其他资源网站 · 汇来云香港回国免备案2h2g 9.9元</p>
     <a href="https://xinyapro.com" class="card-link" target="_blank">访问网站 →</a>
+  </div>
+
+  <div class="glass-card info-card" onclick="handleRipple(event)">
+    <h3>友链</h3>
+    <p>其他资源网站 · 芯云模块商店</p>
+    <a href="https://xtc.icu/" class="card-link" target="_blank">访问网站 →</a>
+  </div>
+
+  <div class="glass-card info-card" onclick="handleRipple(event)">
+    <h3>此站宣传视频</h3>
+    <p>宣传视频 · 能给个三连吗？</p>
+    <a href="https://www.bilibili.com/video/BV1n5AwzaEyb/" class="card-link" target="_blank">哔哩哔哩 · 观看</a>
   </div>
 
   <div class="glass-card info-card" onclick="handleRipple(event)">
@@ -772,6 +836,8 @@
       <p>小天才电话手表全流程ROOT+模块装载 · 新手友好 · 伍潵等人/Skyinsult 制作</p>
       <a href="https://www.bilibili.com/video/BV1mycvzAENX" class="card-link" target="_blank">哔哩哔哩 · 观看[伍潵]</a>
       <a href="https://b23.tv/rqWL7nN" class="card-link" target="_blank">哔哩哔哩 · 观看[Skyinsult]</a>
+      <a href="https://www.bilibili.com/video/BV1Y8AwzHEto" class="card-link" target="_blank">哔哩哔哩 · 观看[孤妄乄妄諵孤緗間
+]</a>
     </div>
     <div class="glass-card info-card" onclick="handleRipple(event)">
       <h3>小天才电话手表详细短接教程</h3>
@@ -891,6 +957,7 @@
     <div class="credit-item"><img src="http://q.qlogo.cn/g?b=qq&nk=3940051204&s=640" alt="LCX" class="avatar" onerror="this.src='https://picsum.photos/100/100?random=5'"><h4>LCX</h4><div class="role">123网盘 · 小天才资源大全</div></div>
     <div class="credit-item"><img src="http://q.qlogo.cn/g?b=qq&nk=52060381&s=640" alt="AAA鑫鸭喵Xinyapro|Синь" class="avatar" onerror="this.src='https://picsum.photos/100/100?random=5'"><h4>AAA鑫鸭喵Xinyapro|Синь</h4><div class="role">友链</div></div>
     <div class="credit-item"><img src="http://q.qlogo.cn/g?b=qq&nk=2220978098&s=640" alt="昔涟" class="avatar" onerror="this.src='https://picsum.photos/100/100?random=5'"><h4>昔涟</h4><div class="role">ATB工具箱开发者</div></div>
+    <div class="credit-item"><img src="http://q.qlogo.cn/g?b=qq&nk=397044237&s=640" alt="小喵是我呀" class="avatar" onerror="this.src='https://picsum.photos/100/100?random=5'"><h4>小喵是我呀</h4><div class="role">建分站者</div></div>
   </div>
 
   <!-- 底部提示 -->
@@ -909,6 +976,14 @@
     <div class="modal-text" style="max-height: 70vh; overflow-y: auto; padding-right: 0.5rem;">
 
       <div style="padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #8ba4d0; font-size: 1.2rem; margin-bottom: 0.8rem;">2026-03-28</div>
+        <div style="color: #ecf2fc; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem;">网页更新</div>
+        <div style="color: #ecf2fc; line-height: 1.8; font-size: 1.1rem;">
+          1. 新增切换主题的功能<br>
+          2. 移动端可以直接访问更流畅的分站<br>
+        </div>
+      </div>
+
         <div style="color: #8ba4d0; font-size: 1.2rem; margin-bottom: 0.8rem;">2026-03-21</div>
         <div style="color: #ecf2fc; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem;">网页更新</div>
         <div style="color: #ecf2fc; line-height: 1.8; font-size: 1.1rem;">
@@ -916,51 +991,46 @@
           2. 可查看网页更新了<br>
         </div>
       </div>
-
-    </div>
-    <a href="#" class="modal-btn" style="margin-top: 1rem;">我已知晓</a>
-  </div>
-</div>
+      </div>
 
 <!-- 核心交互逻辑 -->
 <script>
-  // 水波纹效果
-  function handleRipple(event) {
-    const card = event.currentTarget;
-    const existing = card.querySelector('.ripple-effect');
-    if (existing) existing.remove();
+// 水波纹效果
+function handleRipple(event) {
+  const card = event.currentTarget;
+  const existing = card.querySelector('.ripple-effect');
+  if (existing) existing.remove();
 
-    const ripple = document.createElement('span');
-    ripple.className = 'ripple-effect';
-    const rect = card.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height) * 0.9;
-    const x = (event.clientX - rect.left - size/2) || 0;
-    const y = (event.clientY - rect.top - size/2) || 0;
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple-effect';
+  const rect = card.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height) * 0.9;
+  const x = (event.clientX - rect.left - size/2) || 0;
+  const y = (event.clientY - rect.top - size/2) || 0;
 
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-    ripple.style.position = 'absolute';
-    card.appendChild(ripple);
-    ripple.addEventListener('animationend', () => ripple.remove());
-  }
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  ripple.style.position = 'absolute';
+  card.appendChild(ripple);
+  ripple.addEventListener('animationend', () => ripple.remove());
+}
 
-  // 阻止链接冒泡
-  document.querySelectorAll('.card-link, .primary-btn').forEach(link => {
-    link.addEventListener('click', e => e.stopPropagation());
-  });
+// 阻止链接冒泡
+document.querySelectorAll('.card-link, .primary-btn').forEach(link => {
+  link.addEventListener('click', e => e.stopPropagation());
+});
 
-  // 绑定卡片波纹
-  document.querySelectorAll('.glass-card.info-card').forEach(c => {
-    c.addEventListener('click', handleRipple);
-  });
+// 绑定卡片波纹
+document.querySelectorAll('.glass-card.info-card').forEach(c => {
+  c.addEventListener('click', handleRipple);
+});
 
-  // 列表视图切换（仅切换，不改默认布局）
+// 列表视图切换
 const listToggle = document.getElementById('listToggle');
 const allGridContainers = document.querySelectorAll('.grid-2');
   
 listToggle.addEventListener('click', () => {
-  // 遍历所有grid-2容器，同步切换list-view类
   allGridContainers.forEach(container => {
     container.classList.toggle('list-view');
   });
@@ -972,50 +1042,73 @@ listToggle.addEventListener('click', () => {
   }
 });
 
-  // 公告弹窗（可滑动）
-  const noticeBtn = document.getElementById('noticeBtn');
-  const noticeModal = document.getElementById('noticeModal');
-  const closeModal = document.getElementById('closeModal');
-  const modalBtn = document.querySelector('.modal-btn');
+// 公告弹窗
+const noticeBtn = document.getElementById('noticeBtn');
+const noticeModal = document.getElementById('noticeModal');
+const closeModal = document.getElementById('closeModal');
 
-  // 打开弹窗
-  noticeBtn.addEventListener('click', () => {
-    noticeModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+noticeBtn.addEventListener('click', () => {
+  noticeModal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+});
+
+function closeNoticeModal() {
+  noticeModal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+closeModal.addEventListener('click', closeNoticeModal);
+noticeModal.addEventListener('click', (e) => {
+  if (e.target === noticeModal) closeNoticeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNoticeModal();
+});
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
+});
 
-  // 关闭弹窗
-  function closeNoticeModal() {
-    noticeModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
+// =============== 主题切换===============
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
 
-  closeModal.addEventListener('click', closeNoticeModal);
-  modalBtn.addEventListener('click', closeNoticeModal);
+function updateTheme(theme) {
+  body.setAttribute('data-theme', theme);
+  localStorage.setItem('xtc_theme', theme);
+  themeToggle.innerHTML = theme === 'dark' ? '☀️ 主题' : '🌙 主题';
+}
 
-  // 点击外部关闭
-  noticeModal.addEventListener('click', (e) => {
-    if (e.target === noticeModal) closeNoticeModal();
-  });
+// 初始化
+const currentTheme = localStorage.getItem('xtc_theme') || 'dark';
+updateTheme(currentTheme);
 
-  // ESC关闭
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && noticeModal.style.display === 'flex') {
-      closeNoticeModal();
-    }
-  });
+// 点击切换
+themeToggle.onclick = function() {
+  const next = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  updateTheme(next);
+};
+</script>
+<script>
+(async function logVisitor() {
+  try {
+    const ipRes = await fetch('https://api.ipify.org?format=json');
+    const { ip } = await ipRes.json();
+    const time = new Date().toLocaleString();
 
-  // 平滑滚动
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    await fetch('https://api.npoint.io/5d7f8e8c3b2a10987654', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ip, time })
     });
-  });
+  } catch (e) {}
+})();
 </script>
 </body>
 </html>
