@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- 网站标签页图标 -->
+<link rel="icon" type="image/png" href="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xtcrootwed.jpg">
+<link rel="shortcut icon" href="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xtcrootwed.jpg">
+<link rel="apple-touch-icon" href="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xtcrootwed.jpg">
+
 <script>
 if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    window.location.href = "https://xtczysq.rth1.xyz/";
+    // 不自动跳转，改为弹出选择框
   }
 }
 </script>
@@ -308,11 +313,23 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
       padding-bottom: 1.8rem;
       transform-origin: left;
       animation: slideInHeader 0.7s ease-out;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
     }
 
     @keyframes slideInHeader {
       0% { opacity: 0; transform: translateX(-20px); }
       100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .xtc-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 0 20px rgba(63, 106, 192, 0.3);
     }
 
     .global-header h1 {
@@ -716,6 +733,72 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
       animation: fadeIn 1s;
     }
 
+    /* 移动端选择弹窗 */
+    .mobile-select-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(15px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+    .mobile-select-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .mobile-select-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .mobile-select-box p {
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .mobile-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-btn {
+      padding: 1.2rem 2rem;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .mobile-btn-primary {
+      background: var(--accent-color);
+      color: white;
+    }
+    .mobile-btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+    }
+    .mobile-btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-primary);
+    }
+    .mobile-btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
     @media (max-width: 700px) {
       .grid-2, .resource-grid, .credit-grid { grid-template-columns: 1fr; }
       .global-header h1 { font-size: 2.6rem; }
@@ -729,10 +812,33 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
       .grid-2.list-view {
         grid-template-columns: 1fr;
       }
+      .global-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .xtc-logo {
+        width: 70px;
+        height: 70px;
+      }
     }
   </style>
 </head>
 <body data-theme="dark">
+<!-- 移动端选择弹窗 -->
+<div class="mobile-select-modal" id="mobileModal">
+  <div class="mobile-select-box">
+    <h2>移动端访问选择</h2>
+    <p>当前为手机/平板访问<br>
+    🔹 继续访问本站：功能完整，但可能不够流畅<br>
+    🔹 访问流畅分站：专为移动端优化，体验更佳</p>
+    <div class="mobile-btns">
+      <button class="mobile-btn mobile-btn-primary" id="goToSubSite">访问更流畅的分站</button>
+      <button class="mobile-btn mobile-btn-secondary" id="stayHere">继续访问此网站</button>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <!-- 功能按钮区域（新增主题切换） -->
   <div class="function-buttons">
@@ -753,8 +859,11 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
 
   <!-- 头部 -->
   <div class="global-header">
-    <h1>小天才ROOT</h1>
-    <div class="sub">深度索引 · 动态玻璃</div>
+    <img src="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/xtcrootwed.jpg" alt="小天才ROOT" class="xtc-logo">
+    <div>
+      <h1>小天才ROOT</h1>
+      <div class="sub">深度索引 · 动态玻璃</div>
+    </div>
   </div>
 
 <!-- 快速入口 -->
@@ -917,9 +1026,9 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
   <div class="notice-block blue" style="margin-top:0;">
     <h4>Z10(ND03) 操作指引</h4>
     <p>使用 AllToolBox1.3.5 破解时，手表会出现 fastboot 界面：</p>
-    <img src="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastbootd1.jpg" 
+    <img src="https://gh-proxy.com/https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastbootd.jpg" 
          alt="fastbootd界面" class="guide-img" style="max-width:480px;"
-         onerror="this.src='https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastboot.jpg'">
+         onerror="this.src='https://raw.githubusercontent.com/wusannewcrack/touxianglianjie/main/fastbootd.jpg'">
     <p style="margin-top:1rem;">点击屏幕选中 <strong>"reboot to bootloader"</strong>，按开机键确认。进入bootloader后不要操作手表，继续在电脑端执行后续命令。</p>
     <div class="meta-tags"><span class="meta-tag">Z9 / Z10 / 部分Z8A : 6点短接</span></div>
   </div>
@@ -939,6 +1048,8 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
     <a href="https://atb.wear1.top" class="card-link" target="_blank">访问官网2 →</a>
     <a href="https://atb.xy1.top" class="card-link" target="_blank">访问官网3 →</a>
     <a href="http://atb.corecloud.cc/" class="card-link" target="_blank">访问官网4 →</a>
+    <a href="http://atb.xtc.icu/" class="card-link" target="_blank">访问官网5 →</a>
+    <a href="http://atb.imoo.cc/" class="card-link" target="_blank">访问官网6 →</a>
     </div>
   </div>
 
@@ -977,6 +1088,15 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
     <div class="modal-text" style="max-height: 70vh; overflow-y: auto; padding-right: 0.5rem;">
 
       <div style="padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #8ba4d0; font-size: 1.2rem; margin-bottom: 0.8rem;">2026-03-29</div>
+        <div style="color: #ecf2fc; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem;">网页更新</div>
+        <div style="color: #ecf2fc; line-height: 1.8; font-size: 1.1rem;">
+          1. 网页头像不在是小地球，已经替换为我们自己设计的图标<br>
+          2. 移动端改为选择继续访问此网站还是去更流畅的分站<br>
+        </div>
+      </div>
+
+      <div style="padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
         <div style="color: #8ba4d0; font-size: 1.2rem; margin-bottom: 0.8rem;">2026-03-28</div>
         <div style="color: #ecf2fc; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.8rem;">网页更新</div>
         <div style="color: #ecf2fc; line-height: 1.8; font-size: 1.1rem;">
@@ -996,6 +1116,30 @@ if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) {
 
 <!-- 核心交互逻辑 -->
 <script>
+// 移动端访问判断 & 弹出选择框
+document.addEventListener('DOMContentLoaded', function() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const mobileModal = document.getElementById('mobileModal');
+  const stayHere = document.getElementById('stayHere');
+  const goToSubSite = document.getElementById('goToSubSite');
+
+  if (isMobile) {
+    mobileModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // 继续访问本站
+  stayHere.addEventListener('click', function() {
+    mobileModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  });
+
+  // 跳转分站
+  goToSubSite.addEventListener('click', function() {
+    window.location.href = "https://xtczysq.rth1.xyz/";
+  });
+});
+
 // 水波纹效果
 function handleRipple(event) {
   const card = event.currentTarget;
